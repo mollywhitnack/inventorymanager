@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>By Room</title>
+</head>
+<body ng-app = 'myApp'>
+ <div class = "container">
+ <br>
+  <h1>By Room</h1>
+
+Search by room: <input type="text" ng-model="search.room">
+
+<table class="table" ng-hide = "items.length ===0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Value</th>v
+        <th>Room</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "item in items | filter:search | orderBy: 'room' ">
+      <td >{{item.name}}</td>
+      <td >{{item.value | currency}}</td>
+      <td >{{item.room}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</div>  
+</body>
+</html>

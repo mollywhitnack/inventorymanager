@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Items</title>
+</head>
+<body ng-app = 'myApp' ng-controller = 'allItemsCtrl'>
+<hr>
+ <div class = "container">
+  <h1>All Items</h1>
+
+<table class="table" ng-hide = "items.length ===0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Value</th>v
+        <th>Room</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = 'item in items'>
+      <td >{{item.name}}</td>
+      <td >{{item.value | currency}}</td>
+      <td >{{item.room}}</td>
+      <td><button class="btn btn-danger" ng-click = 'deleteItem($index, item)'>Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+<hr>
+  <div class = "total">Total: {{total | currency}}</div>
+<hr>
+
+<form ng-submit = 'addItem()'>
+  <div class="form-group">
+      <label >Name</label>
+      <input type="text" class="form-control" placeholder="Name" ng-model = 'newItem.name' required>
+    </div>
+    <div class="form-group">
+      <label >Value</label>
+      <input type="number" class="form-control" placeholder="Value" ng-model = 'newItem.value' required>
+    </div>
+    <div class="form-group">
+      <label >Room</label>
+      <input type="text" class="form-control" placeholder="Room" ng-model = 'newItem.room' required>
+    </div>
+    <div class = "text-center submitbt"><button type="submit" class="btn btn-primary">Add New Item</button></div>
+  </form>
+
+</div>
+</body>
+</html>

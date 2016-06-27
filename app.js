@@ -32,14 +32,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /////add routers here/////
 
-app.use('/cardData', require('./routes/cardData'));
+app.use('/items', require('./routes/items'));
 
 
 //////////////////////////
 
 
 app.use('/', (req, res)=>{
-  res.render('index', {'title': 'NEW TITLE'});
+  res.render('index', {'title': 'Inventory Manager'});
 });
 
 // catch 404 and forward to error handler

@@ -1,3 +1,11 @@
-.gameSquares{
-  padding-top: 8px;
+.itemViews{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: center;
 }
+
+.welcome{
+  padding-top: 20%;
+  text-align: center;
+}
+
