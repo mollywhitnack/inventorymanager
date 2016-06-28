@@ -8,7 +8,6 @@ app.controller('mainCtrl', function($scope, $http, Item){
  
   Item.getItems()
   .then(items=>{
-   // let id = $scope.id;
      console.log("items: ", items);
      $scope.items = items;
   })
@@ -25,15 +24,14 @@ app.controller('mainCtrl', function($scope, $http, Item){
       .then(item => {
       //console.log("item to add", item);
       $scope.items.splice(ind,1);
+      $scope.total = getTotal();
     })
     .catch(err=>{
     console.log("error: ", err );
     });
   }
 
-  $scope.$watch('total', function() {
-        console.log('hey, myVar has changed in main!');
-  });
+
 
 });
 
@@ -55,6 +53,23 @@ app.controller('allItemsCtrl', function($scope, $stateParams, Item){
     return total;
   }
 
+  app.filter('filterRooms', function(){
+    return function(room, rooms){
+      return 
+    }
+  })
+
+  $scope.$watch(function(){
+    return angular.tJson($scope.search);
+  }, function(){
+      let sum =0;
+      $scope.items.forEach(item =>{
+        if(item.room === $scope.searchFilter){
+          sum += item.value;
+        }
+      });
+      $scope.total = sum;
+  })
 
     $scope.addItem = () => {
     Item.addItem($scope.newItem)
@@ -67,25 +82,6 @@ app.controller('allItemsCtrl', function($scope, $stateParams, Item){
     .catch(err=>{
     console.log("error: ", err );
     });
-
-   $scope.$watch('total', function() {
-        console.log('hey, myVar has changed!');
-        $scope.total= getTotal();
-    });
-
-   /* $scope.deleteItem = function(ind){
-      console.log("in delete Item");
-    Item.deleteItem(ind)
-      .then(item => {
-      console.log("item to add", item);
-      $scope.items.splice(ind,1);
-    })
-    .catch(err=>{
-    console.log("error: ", err );
-    });
-    }*/
-
-    //$scope.storage.items.push(item);
   };
 
 
